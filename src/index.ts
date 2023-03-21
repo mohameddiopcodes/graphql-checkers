@@ -8,7 +8,11 @@ const yoga = createYoga({
                 hello: String
             }
         `,
-        resolvers: {}
+        resolvers: {
+            Query: {
+                hello: () => "hello world"
+            }
+        }
     })
 })
 
