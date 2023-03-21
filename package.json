@@ -1,0 +1,26 @@
+{
+  "name": "graphql-basics",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node ./dist"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "ts-node --files -r tsconfig-paths/register ./src"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.3",
+    "nodemon": "^2.0.21",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "graphql-yoga": "^3.7.3"
+  }
+}
