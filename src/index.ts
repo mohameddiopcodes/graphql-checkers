@@ -1,7 +1,16 @@
-import { createYoga } from "graphql-yoga";
+import { createSchema, createYoga } from "graphql-yoga";
 import { createServer } from "http";
 
-const yoga = createYoga({})
+const yoga = createYoga({
+    schema: createSchema({
+        typeDefs: `
+            type Query {
+                hello: String
+            }
+        `,
+        resolvers: {}
+    })
+})
 
 const server = createServer(yoga)
 
