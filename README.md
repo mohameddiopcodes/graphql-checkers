@@ -1,6 +1,12 @@
-## A Simple GraphQL Server
+## Sample GraphQL Project
 
-A simple Typescript/GraphQL server boilerplate to get started on your projects in an unopinionated manner. This sample repository exposes a [graphql-yoga](https://github.com/dotansimha/graphql-yoga) server on port `:4000/graphql`.
+This sample repository exposes a Typescript [graphql-yoga](https://github.com/dotansimha/graphql-yoga) server on port `:4000/graphql`.
+
+### Supported Operations
+
+* Queries for `users`, `posts` and `comments`
+* Mutations to create, update and delete a `User`, a `Post` and a `Comment`
+* Subscriptions to all theses Mutation events through the `post` and `comment` subscriptions.
 
 ### install command
 
