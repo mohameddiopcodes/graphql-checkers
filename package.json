@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
-    "start": "node ./dist"
+    "start": "nodemon"
   },
   "nodemonConfig": {
     "watch": [
@@ -13,14 +13,13 @@
     "ext": "ts, graphql, gql",
     "exec": "ts-node --files -r tsconfig-paths/register ./src"
   },
-  "devDependencies": {
-    "@types/node": "^18.15.3",
-    "nodemon": "^2.0.21",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
-    "typescript": "^5.0.2"
-  },
+  "devDependencies": {},
   "dependencies": {
+    "nodemon": "^2.0.21",
+    "tsconfig-paths": "^4.1.2",
+    "@types/node": "^18.15.3",
+    "typescript": "^5.0.2",
+    "ts-node": "^10.9.1",
     "@types/bcryptjs": "^2.4.3",
     "@types/cookie-parser": "^1.4.4",
     "@types/dotenv": "^8.2.0",

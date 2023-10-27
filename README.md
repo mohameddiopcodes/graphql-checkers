@@ -22,13 +22,25 @@ Users can start checkers games, appoint opponents and subscribe to a stream of d
 * Subscriptions:
     - `joinGame(gameId)`: Subscribe to a stream of events happening in a game.
 
+### Technologies Used
+
+- `Typescript`: Programming Language
+- `GraphQL Yoga`: GraphQL Server Implementation
+- `Mongoose`: ORM
+- `Express`: Server
+- `bcryptjs`: Hashing Library
+- `jsonwebtoken`: JWT Implementation with decode ability
+
 ### Game Logic
 
-1. Boards are `8x8`, `10x10` or `12x12`
-2. A `chip` can only `move away from with camp`
-3. A `capture` happens when jumping over an opponent's chip
-4. A `chip gets crowned` once it reaches its `opponent's camp`
-5. `crowned chips` can move forward and backwards
+Checkers is an international strategy game played on a board.
+
+- #### Rules:
+    1. Boards are `8x8`, `10x10` or `12x12`
+    2. A `chip` can only `move away from with camp`
+    3. A `capture` happens when jumping over an opponent's chip
+    4. A `chip gets crowned` once it reaches its `opponent's camp`
+    5. `crowned chips` can move forward and backwards
 - [Example](https://serious-checkers.vercel.app).
 
 ### Validations
