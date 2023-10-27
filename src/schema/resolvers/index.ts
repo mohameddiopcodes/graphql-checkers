@@ -1,17 +1,11 @@
-import Query from "./Query";
-import Mutation from "./Mutation";
-import User from "./User";
-import Post from "./Post";
-import Comment from "./Comment";
-import Subscription from "./Subscription";
+import Queries from "./Queries";
+import Mutations from "./Mutations";
+import Subscriptions from "./Subscriptions";
 
 const resolvers = {
-  Query,
-  Mutation,
-  Subscription,
-  User,
-  Post,
-  Comment,
+  Query: Queries,
+  Mutation: Mutations,
+  Subscription: Subscriptions,
 };
 
 export default resolvers;

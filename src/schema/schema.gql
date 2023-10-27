@@ -1,104 +1,93 @@
 # GraphQL Type definitions
 type Query {
-  users(query: String): [User!]!
-  posts(query: String): [Post!]!
-  comments: [Comment!]!
-  me: User!
-  post: Post!
+  authorizeUser(user: UserLoginInput!): ReadableUser!
+  readUser(id: String!): ReadableUser!
+  myAccount: ReadableUser!
+  readUsers: ReadableUser!
+  myGames(player: Int): [Game]
 }
 
 type Mutation {
-  createUser(data: CreateUserInput!): User!
-  updateUser(id: ID!, data: updateUserInput!): User!
-  deleteUser(id: ID!): User!
-  createPost(data: CreatePostInput!): Post!
-  updatePost(id: ID!, data: updatePostInput!): Post!
-  deletePost(id: ID!): Post!
-  createComment(data: CreateCommentInput!): Comment!
-  updateComment(id: ID!, data: updateCommentInput!): Comment!
-  deleteComment(id: ID!): Comment!
+  createUser(user: UserSignupInput!): ReadableUser!
+  updateUser(user: UserUpdateInput!): ReadableUser!
+  deleteUser: ReadableUser!
+  newGame(opponentId: String, boardSize: Int): Game!
+  joinGame(gameId: String!): Status!
+  move(gameId: String!, start: CoordinateInput!, end: CoordinateInput!): Event!
 }
 
 type Subscription {
-  count: Int!
-  comment(postId: ID!): CommentSubscriptionPayload!
-  post: PostSubscriptionPayload!
+  joinGame(gameId: String!): Event!
 }
 
-type User {
-  id: ID!
+input UserLoginInput {
+  email: String!
+  password: String!
+  profilePicture: String
+}
+
+input UserSignupInput {
   name: String!
   email: String!
-  age: Int
-  posts: [Post]!
-  comments: [Comment]!
+  password: String!
+  profilePicture: String
 }
 
-type Post {
-  id: ID!
-  title: String!
-  body: String!
-  published: Boolean!
-  author: User!
-  comments: [Comment]!
-}
-
-type PostSubscriptionPayload {
-  mutation: MutationType!
-  data: Post!
-}
-
-type Comment {
-  id: ID!
-  text: String!
-  author: User!
-  post: Post!
-}
-
-type CommentSubscriptionPayload {
-  mutation: MutationType!
-  data: Comment!
-}
-
-#Enum Definitions
-enum MutationType {
-  CREATED
-  UPDATED
-  DELETED
-}
-
-# Input Definitions
-input CreateUserInput {
-  name: String!
-  email: String!
-  age: Int
-}
-
-input updateUserInput {
+input UserUpdateInput {
   name: String
   email: String
+  profilePicture: String
+  password: String
   age: Int
 }
 
-input CreatePostInput {
-  title: String!
-  body: String!
-  published: Boolean!
-  author: ID!
+type ReadableUser {
+  name: String!
+  email: String!
+  profilePicture: String
+  age: Int
 }
 
-input updatePostInput {
-  title: String
-  body: String
-  published: Boolean
+type Game {
+  id: String!
+  turn: Int!
+  board: Board!
+  status: Status!
+  players: Players!
 }
 
-input CreateCommentInput {
-  text: String!
-  author: ID!
-  post: ID!
+type Board {
+  size: Int!
+  state: [[Int]]!
 }
 
-input updateCommentInput {
-  text: String!
+type Status {
+  game: Int!
+  playerOne: Int!
+  playerTwo: Int!
+}
+
+type Players {
+  one: String!
+  two: String
+}
+
+type Move {
+  start: Coordinates
+  end: Coordinates
+}
+
+type Event {
+  status: Status
+  move: Move
+}
+
+type Coordinates {
+  x: Int!
+  y: Int!
+}
+
+input CoordinateInput {
+  x: Int!
+  y: Int!
 }
